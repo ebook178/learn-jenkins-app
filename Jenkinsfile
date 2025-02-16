@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    enviroment{
+    environment{
         netlify_site_id="b1d462e5-38e4-45c0-ade7-5c49ebd133cd"
     }
 
