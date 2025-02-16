@@ -83,7 +83,7 @@ pipeline {
                 sh '''
                    npm install netlify-cli
                    node_modules/.bin/netlify --version
-                   echo "Deploying to prodution. Site ID:$netlify_site_id
+                   echo "Deploying to prodution. Site ID:$netlify_site_id"
                '''
             }
         }
