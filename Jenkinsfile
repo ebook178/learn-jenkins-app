@@ -89,7 +89,7 @@ pipeline {
                    node_modules/.bin/netlify status
                    node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
                '''
-                scrtips{
+                script{
                     env.STAGEING_URL = sh(scrtips: "node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json", returnStdout: true)
                 }
             }
