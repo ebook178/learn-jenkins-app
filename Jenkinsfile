@@ -90,7 +90,7 @@ pipeline {
                    node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
                '''
                 script{
-                    env.STAGEING_URL = sh(scrtips: "node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json", returnStdout: true)
+                    env.STAGEING_URL = sh(script: "node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json", returnStdout: true)
                 }
             }
         }
