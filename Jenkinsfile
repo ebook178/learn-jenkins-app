@@ -85,7 +85,7 @@ pipeline {
             environment {
                 CI_ENVIRONMENT_URL = 'STAGING_URL_TO_BE_SET'
             }
-            
+
             steps {
                 sh '''
                     node --version
@@ -94,7 +94,7 @@ pipeline {
                     echo "Deploying to prodution. Site ID:$NETLIFY_SITE_ID"
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=build --json > deploy-output.json
-                    CI_ENVIRONMENT_URL = $(node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json)
+                    CI_ENVIRONMENT_URL=$(node_modules/.bin/node-jq -r '.deploy_url' deploy-output.json)
                     npx playwright test --reporter=html
                 '''
             }
