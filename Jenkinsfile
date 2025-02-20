@@ -82,6 +82,10 @@ pipeline {
                 }
             }
 
+            environment{
+                CI_ENVIRONMENT_URL = "STAGING_URL_TO_BE_SET"
+            }            
+
             steps {
                 sh '''
                     node --version
@@ -94,6 +98,7 @@ pipeline {
                     npx playwright test --reporter=html
                 '''
             }
+            
             post{
                 always{
                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Deploy Stage', reportTitles: '', useWrapperFileDirectly: true])
