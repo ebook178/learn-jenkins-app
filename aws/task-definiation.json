@@ -11,7 +11,7 @@
                 "name":"ngnix-80-tcp",
                 "containerPort": 80,
                 "hostPort": 80,
-                "protocol": tcp,
+                "protocol": "tcp",
                 "appProtocol": "http"
             }],
             "essential": true
