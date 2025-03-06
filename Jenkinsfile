@@ -31,10 +31,17 @@ pipeline {
             }
         }    
 
-       stage('Docker') {
-         steps {
-            sh 'docker build -f Dockerfile -t myjenkinsapp .'
-         }
+       stage('Build Docker Image') {
+        agent {
+            docker {
+                image 'amazon/aws-cli'
+                reuseNode true
+                args "-u root --entrypoint=''"
+            }
+        }         
+        steps {
+           sh 'docker build -f Dockerfile -t myjenkinsapp .'
+        }
        }
 
        stage('Deploy to AWS') {
